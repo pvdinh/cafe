@@ -1,0 +1,79 @@
+﻿
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<Loginweb.Models.staff>
+
+
+@{
+    ViewBag.Title = "setting";
+    Layout = "~/Views/Shares/_Layout.cshtml";
+    if (Session["type"] == null)
+    {
+        Response.Redirect("/Login/Index");
+    }
+}
+
+<link href="~/assets/css/body/setting.css" rel="stylesheet" />
+<script src="~/assets/Scripts/ajaxpartialview.js"></script>
+<script src="~/assets/Scripts/jquery.js"></script>
+
+<div class="staff-info">
+    <table class="staff-table">
+        <tr>
+            <th>ID Staff</th>
+            <th>Name</th>
+            <th>Email</th>
+            <Th>Position</Th>
+            <th>Status</th>
+            <th>ID Account</th>
+            <th id="add-staff">Add</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.idstaff</td>
+                <td>@item.name</td>
+                <td>@item.email</td>
+                <td>@item.position</td>
+                <td>@item.status</td>
+                <td>@item.idaccount</td>
+                <td id="Save-staff">
+                    @Html.ActionLink("Edit", "editstaff", new { id = item.idstaff }) <br />
+                    @*show alert delete staff*@
+                    @Html.ActionLink("Delete", "seletestaff", new { id = item.idstaff }, new { onclick = "return confirm('Are you want to Delete ??');" })
+                </td>
+            </tr>
+
+        }
+    <tr id="insert">
+        <td>@ViewBag.count</td>
+        @using (Html.BeginForm("addstaff", "Home", FormMethod.Post))
+        {
+            <td>@Html.TextBox("name", "", new { required = true })</td>
+            <td>@Html.TextBox("email", "", new { required = true })</td>
+            <td>@Html.TextBox("position", "", new { required = true })</td>
+            <td>@Html.TextBox("status", "", new { required = true })</td>
+            @*<td>@Html.TextBox("idaccount", "", new { required = true })</td>*@
+            <td>@ViewBag.count</td>
+            <th id="Save-staff">
+                <button type="submit">Save</button>
+                <h3 id="Cancel-staff">Cancel</h3>
+            </th>
+        }
+
+    </tr>
+    </table>
+</div>
+<div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("setting", new { page }), new PagedListRenderOptions { LiElementClasses = new string[] { "page-item" }, UlElementClasses = new string[] { "pagination" } })
+</div>
+<script>
+    $('#insert').hide();
+    $("#add-staff").click(function () {
+        $("#insert").show();
+    });
+    $("#Cancel-staff").click(function () {
+        $("#insert").hide();
+    });
+</script>

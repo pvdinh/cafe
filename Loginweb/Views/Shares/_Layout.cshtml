@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+@using System.Web.Optimization  
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/assets/Scripts/jquery.js"></script>
+    <title>@Session["type"].ToString()</title>
+    <script src="~/assets/Scripts/jquery-1.11.3.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.unobtrusive-ajax/3.2.5/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/assets/Scripts/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <span class="header-add">
+                Liên hệ: 0963118434 (Sđt, Zalo) - haocute@gmail.com
+            </span>
+        </div>
+        <div class="header-right">
+            Heyyy : @Session["type"].ToString()
+            <p style="color: var(--text)"><a href="@Url.Action("Logout","Login")">Logout</a></p>
+        </div>
+    </div>
+    <div class="bodyweb">
+        <div class="slidebar">
+            <header>Quản lý Cafe</header>
+            <ul>
+                <li>
+                    <a href="@Url.Action("Index","Home")"> <i class="fas fa-coffee"></i>Cà phê</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("product","Home")"><i class="fab fa-product-hunt"></i>Sản phẩm</a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fa fa-users"></i>Khách hàng-NCC</a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fas fa-clipboard"></i>Phiếu thu</a>
+                </li>
+                <li>
+                    <a href="#"> <i class="fas fa-clipboard"></i>Phiếu chi</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("setting","Home")"> <i class="fa fa-cogs"></i>Cài đặt</a>
+                </li>
+            </ul>
+        </div>
+
+
+            <div class="rightweb">
+                @RenderBody()
+            </div>
+        </div>
+
+        @*Start of Tawk.to Script
+        <script type="text/javascript">
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            (function () {
+                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/5e5db73af2eb411bb572200b/default';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+        </script>
+        End of Tawk.to Script*@
+
+</body>
+</html>

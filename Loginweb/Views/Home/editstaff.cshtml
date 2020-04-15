@@ -1,0 +1,41 @@
+﻿@model Loginweb.Models.ClassData
+
+@{
+    ViewBag.Title = "editstaff";
+    Layout = "~/Views/Shares/_Layout.cshtml";
+    if (Session["type"] == null)
+    {
+        Response.Redirect("/Login/Index");
+    }
+}
+<link href="~/assets/css/body/delete.css" rel="stylesheet" />
+<link href="~/assets/css/delete.css" rel="stylesheet" />
+<link href="~/assets/css/delete.css" rel="stylesheet" />
+<div class="form-horizontal">
+    @foreach (var item in Model.allstaffs)
+    {
+        <div class="deletestaff">
+
+            <h2>editstaff</h2>
+            @using (Html.BeginForm("savestaff","Home",FormMethod.Post))
+            {
+                var idstaff = item.idstaff.ToString();
+                var name = item.name;
+                var email = item.email;
+                var pos = item.position;
+                var sta = item.status;
+                var idaccount1 = item.idaccount.ToString();
+                <div>@Html.TextBox("idstaff",idstaff, new { required = true, @readonly = "readonly" })</div>
+                <div>@Html.TextBox("name",name, new { required = true })</div>
+                <div>@Html.TextBox("email",email, new { required = true })</div>
+                <div>@Html.TextBox("position",pos, new { required = true })</div>
+                <div>@Html.TextBox("status",sta, new { required = true })</div>
+                <div>@Html.TextBox("idaccount", idaccount1, new { required = true, @readonly = "readonly" })</div>
+
+                <a href="@Url.Action("setting", "Home")" id="back">Back</a>
+                <button id="delete" type="submit">Save</button>
+            }
+
+        </div>
+    }
+</div>

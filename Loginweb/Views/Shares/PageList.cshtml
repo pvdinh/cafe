@@ -1,0 +1,58 @@
+﻿
+@using PagedList.Mvc
+
+@model PagedList.IPagedList<Loginweb.Models.staff>
+
+<script src="~/assets/Scripts/ajaxpartialview.js"></script>
+<script src="~/assets/Scripts/jquery.js"></script>
+<table class="staff-table">
+    <tr>
+        <th>ID Staff</th>
+        <th>Name</th>
+        <th>Email</th>
+        <Th>Position</Th>
+        <th>Status</th>
+        <th>ID Account</th>
+        <th id="add-staff">Add</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.idstaff</td>
+            <td>@item.name</td>
+            <td>@item.email</td>
+            <td>@item.position</td>
+            <td>@item.status</td>
+            <td>@item.idaccount</td>
+            <td id="Save-staff">
+                @Html.ActionLink("Edit", "editstaff", new { id = item.idstaff }) <br />
+                @*show alert delete staff*@
+                @Html.ActionLink("Delete", "seletestaff", new { id = item.idstaff }, new { onclick = "return confirm('Are you want to Delete ??');" })
+            </td>
+        </tr>
+
+    }
+    <tr id="insert">
+        <td>No Change</td>
+        @using (Html.BeginForm("addstaff", "Home", FormMethod.Post))
+        {
+            <td>@Html.TextBox("name", "", new { required = true })</td>
+
+            <td>@Html.TextBox("email", "", new { required = true })</td>
+            <td>@Html.TextBox("position", "", new { required = true })</td>
+            <td>@Html.TextBox("status", "", new { required = true })</td>
+            <td>@Html.TextBox("idaccount", "", new { required = true })</td>
+
+            <th id="Save-staff">
+                <button type="submit">Save</button>
+                <h3 id="Cancel-staff">Cancel</h3>
+            </th>
+        }
+        </tr>
+    </table>
+    <br />
+    <br />
+
+    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount*@
+        @*@Html.PagedListPager(Model, page => Url.Action("page", new { page } ))
+@Html.PagedListPager(Model, page => Url.Action("page", new { page=page } ),PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions(){  HttpMethod = "GET", UpdateTargetId = "staff-info"}))*@

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="958420dade714cbdb81a0a001b0ef4a2" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLyCafe3Model.account" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafe3Model.bill" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafe3Model.billinfo" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafe3Model.category" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafe3Model.food" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafe3Model.staff" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLyCafe3Model.tablefood" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="QuanLyCafe3Model.FK__bill__idaccount__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafe3Model.FK__staff__idaccount__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafe3Model.FK__bill__idtable__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafe3Model.FK__billinfo__idbill__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafe3Model.FK__billinfo__idfood__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLyCafe3Model.FK__food__idcategory__1FCDBCEB" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

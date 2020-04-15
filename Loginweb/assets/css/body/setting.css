@@ -1,0 +1,99 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.staff-table,
+th,
+td {
+    border-top: 1px solid var(--text);
+    border-bottom: 1px solid var(--text);
+}
+
+.staff-table {
+    border-collapse: collapse;
+    color: var(--text);
+    width: 80%;
+}
+
+    .staff-table th,
+    td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    .staff-table th {
+        height: 50px;
+        background: rgb(105, 103, 103);
+    }
+
+    .staff-table td {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+.staff-info {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+}
+
+#insert {
+    background: rgb(105, 103, 103);
+}
+
+    #insert input {
+        background: none;
+        border: none;
+        outline: none;
+        line-height: 38px;
+        width: 100%;
+    }
+
+    #insert > td {
+        padding: 0;
+        padding-left: 10px;
+    }
+
+#add-staff {
+    user-select: none;
+    cursor: pointer;
+    color: #ee5959;
+    padding-right: 0px;
+}
+
+#Cancel-staff {
+    user-select: none;
+    cursor: pointer;
+    padding-right: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ee5959;
+}
+
+#Save-staff {
+    user-select: none;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+    #Save-staff button {
+        color: #ee5959;
+        cursor: pointer;
+        font-size: 14px;
+        background: none;
+        border: none;
+        outline: none;
+        font-weight: 400;
+    }
+
+table a {
+    text-decoration: none;
+    color: #ee5959;
+}
+
+#insert input:focus {
+    background: var(--text);
+}

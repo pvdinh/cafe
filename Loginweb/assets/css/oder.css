@@ -1,0 +1,104 @@
+
+.tableoder{
+    float: left;
+    width: 70%;
+    overflow: auto;
+}
+
+.category{
+    padding-top: 50px;
+    float: right;
+    width: 30%;
+    padding-left: 20px;
+}
+
+.oderitem header{
+    text-align: center;
+    padding: 10px 20px;
+    color: var(--text);
+}
+
+.tableoder table,tr, th, td{
+    border: 1px solid var(--text);
+    text-align: left;
+}
+
+.tableoder tr,th,td{
+    padding: 5px 10px;
+}
+
+.tableoder table{
+    border-collapse: collapse;
+    width: 95%;
+}
+tr:hover{
+    background-color:#2d3436;
+    cursor:pointer;
+}
+
+.oderitem{
+    margin-left: 10px;
+    position: fixed;
+    width: 52%;
+}
+.productitem{
+    float: right;
+    width: 40%;
+}
+
+.listproduct{
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1000px){
+    .slidebar{
+        visibility:hidden;
+    }
+    .rightweb{
+        width: 100%;
+    }
+    .oderitem{
+        z-index: 1;
+        background: #353d3f;
+        width: 100%;
+        height: 20%;
+        overflow: auto;
+        border-bottom: 10px solid rgba(100, 98, 98, 0.712);
+        padding-left: 50px;
+    }
+    .productitem{
+        margin-top: 21%;
+        width: 100%;
+    }
+    .listproduct{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.buttonlist{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.confirm{
+    border: 1px solid white;
+    padding: 7px 10px;
+    outline: none;
+    color: var(--text);
+    background: #2d3436;
+    
+}
+.bill{
+    border: 1px solid white;
+    outline: none;
+    background: #2d3436;
+    color: var(--text);
+    padding: 7px 10px;
+    float: right;
+    margin-right: 32px;
+}
+.buttonlist button:hover{
+    background: #656666;
+    cursor: pointer;
+}

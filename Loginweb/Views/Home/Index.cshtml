@@ -1,0 +1,62 @@
+﻿@model Loginweb.Models.ClassData
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shares/_Layout.cshtml";
+    if (Session["type"] == null)
+    {
+        Response.Redirect("/Login/Index");
+    }
+}
+
+<link href="~/assets/css/Cafe.css" rel="stylesheet" />
+<div class="toptable">
+    <div class="all">Toàn bộ</div>
+    <div class="customer">Có khách</div>
+    <div class="empty">Bàn trống</div>
+</div>
+
+
+@foreach (var item in Model.alltablefoods)
+{
+    <div class="area">
+       <a style="color:#f8eaea" href="/order/index/@item.id" ><div class="table" id="@item.status.Replace(" ",string.Empty).ToLower()"> @item.name <br /><p>@item.status .</p></div></a> 
+    </div>
+
+
+}
+<script>
+
+    $(".all").click(function () {
+        $(".table").show();
+    })
+    $(".customer").click(function () {
+        $("#trống").hide();
+        $("#cóngười").show();
+    })
+    $(".empty").click(function () {
+        $("#trống").show();
+        $("#cóngười").hide();
+    })
+    //function compare(s, s1) {
+    //    var min = s.length;
+    //    if (min < s1.length) {
+    //        min = s1.length;
+    //    }
+    //    for (var i = 0; i < min; i++) {
+    //        if (s[i] != s1[i]) return -1
+    //    }
+    //    if (s.length == s1.length) return 0
+    //    else return 1
+    //}
+
+    //var s = $(".table > p").text().toString().split(".");
+    //var temp = "có người ";
+    //for (let i = 0; i < s.length; i++) {
+    //    if (compare(s[i], temp) == 0) {
+    //            $(".table").addClass("set");
+    //        }
+    //}
+    //$(".table").addClass(function (index) {
+    //        return "set" + index;
+    //});
+</script>

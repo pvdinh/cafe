@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = null;
+}
+@using Loginweb.Models
+@model account
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <script src="~/assets/Scripts/jquery.js"></script>
+    <link href="~/assets/css/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="login-form">
+
+        @using (Html.BeginForm("Result", "Login", FormMethod.Post))
+        {
+            <h1 style="user-select:none">Login</h1>
+            <div class="txtb">
+                @Html.TextBoxFor(model => model.id,new { placeholder="Username",required ="true" })
+                <span></span>
+            </div>
+            <p style="color:red">@Html.ValidationMessageFor(model => model.id)</p>
+            <div class="txtb">
+                @Html.TextBoxFor(model => model.password,new { placeholder="Password",type="password", required ="true" })
+                <span></span>
+            </div>
+            <p style="color:red;margin-bottom:10px">@Html.ValidationMessageFor(model => model.password)</p>
+            <button type="submit" class="logbnt">Login</button>
+
+            <h4 style="text-align:center;margin-top:20px;color:red">@Html.DisplayFor(model => model.LoginErrorMessage)</h4>
+            <script>
+                $(".txtb input").on("focus", function () {
+                    $(this).addClass("focus");
+                });
+
+                $(".txtb input").on("blur", function () {
+                    if ($(this).val() == "")
+                        $(this).removeClass("focus");
+                });
+            </script>
+
+        }
+
+    </div>
+</body>
+</html>
