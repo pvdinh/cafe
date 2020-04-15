@@ -19,7 +19,6 @@ namespace Loginweb.Controllers
         private bool position_deletestaff;
         public ActionResult Index()
         {
-
             data.alltablefoods = db.tablefoods.ToList();
             return View(data);
         }
@@ -62,7 +61,7 @@ namespace Loginweb.Controllers
                         db.deletestaffaccount(id);
                     }
                     else
-                    {
+                    { 
                         position_deletestaff = false;
                         db.deletestaffaccount(id);
                     }
