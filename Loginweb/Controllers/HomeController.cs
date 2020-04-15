@@ -62,9 +62,8 @@ namespace Loginweb.Controllers
                         db.deletestaffaccount(id);
                     }
                     else
-                    {
-                        position_deletestaff = false;
-                        db.deletestaffaccount(id);
+                    { 
+                        
                     }
                 }
                 catch
