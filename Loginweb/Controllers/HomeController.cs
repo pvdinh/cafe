@@ -63,7 +63,8 @@ namespace Loginweb.Controllers
                     }
                     else
                     { 
-                        
+                        position_deletestaff = false;
+                        db.deletestaffaccount(id);
                     }
                 }
                 catch
