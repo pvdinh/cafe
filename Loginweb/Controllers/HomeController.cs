@@ -19,6 +19,7 @@ namespace Loginweb.Controllers
         private bool position_deletestaff;
         public ActionResult Index()
         {
+
             data.alltablefoods = db.tablefoods.ToList();
             return View(data);
         }
