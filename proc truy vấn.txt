@@ -1,0 +1,29 @@
+CREATE PROC ViewAllStaff
+AS
+BEGIN
+	SELECT * FROM dbo.staff
+END
+
+CREATE PROC VieAllTablefood
+AS
+BEGIN
+	SELECT * FROM dbo.tablefood
+END
+
+CREATE PROC ViewAllCategory
+AS
+BEGIN
+	SELECT * FROM dbo.category
+END
+
+CREATE PROC ViewAllFood
+AS
+BEGIN
+	SELECT * FROM dbo.food
+END
+
+CREATE PROC ViewAllAccount --chỉ admin có quyền dùng proc này
+AS
+BEGIN
+	SELECT * FROM dbo.account
+END
