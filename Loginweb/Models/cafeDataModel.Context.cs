@@ -117,5 +117,74 @@ namespace Loginweb.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Addstaffaccountlatest", nameParameter, statusParameter, positionParameter, emailParameter, idaccountParameter, usernameParameter, passwordParameter, typeParameter);
         }
+    
+        public virtual int add_bill(Nullable<System.DateTime> datecheckin, Nullable<System.DateTime> datecheckout, string status, Nullable<int> idaccount, Nullable<int> idtable)
+        {
+            var datecheckinParameter = datecheckin.HasValue ?
+                new ObjectParameter("datecheckin", datecheckin) :
+                new ObjectParameter("datecheckin", typeof(System.DateTime));
+    
+            var datecheckoutParameter = datecheckout.HasValue ?
+                new ObjectParameter("datecheckout", datecheckout) :
+                new ObjectParameter("datecheckout", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var idaccountParameter = idaccount.HasValue ?
+                new ObjectParameter("idaccount", idaccount) :
+                new ObjectParameter("idaccount", typeof(int));
+    
+            var idtableParameter = idtable.HasValue ?
+                new ObjectParameter("idtable", idtable) :
+                new ObjectParameter("idtable", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("add_bill", datecheckinParameter, datecheckoutParameter, statusParameter, idaccountParameter, idtableParameter);
+        }
+    
+        public virtual int add_billinfo(Nullable<int> idbill, Nullable<int> idfood, Nullable<int> count)
+        {
+            var idbillParameter = idbill.HasValue ?
+                new ObjectParameter("idbill", idbill) :
+                new ObjectParameter("idbill", typeof(int));
+    
+            var idfoodParameter = idfood.HasValue ?
+                new ObjectParameter("idfood", idfood) :
+                new ObjectParameter("idfood", typeof(int));
+    
+            var countParameter = count.HasValue ?
+                new ObjectParameter("count", count) :
+                new ObjectParameter("count", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("add_billinfo", idbillParameter, idfoodParameter, countParameter);
+        }
+    
+        public virtual int delete_billinfo(Nullable<int> idbill)
+        {
+            var idbillParameter = idbill.HasValue ?
+                new ObjectParameter("idbill", idbill) :
+                new ObjectParameter("idbill", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("delete_billinfo", idbillParameter);
+        }
+    
+        public virtual int customer_table(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("customer_table", idParameter);
+        }
+    
+        public virtual int empty_table(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("empty_table", idParameter);
+        }
     }
 }

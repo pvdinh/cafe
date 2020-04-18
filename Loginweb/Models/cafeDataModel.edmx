@@ -141,6 +141,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="add_bill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="datecheckin" Type="datetime" Mode="In" />
+          <Parameter Name="datecheckout" Type="datetime" Mode="In" />
+          <Parameter Name="status" Type="nvarchar" Mode="In" />
+          <Parameter Name="idaccount" Type="int" Mode="In" />
+          <Parameter Name="idtable" Type="int" Mode="In" />
+        </Function>
+        <Function Name="add_billinfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idbill" Type="int" Mode="In" />
+          <Parameter Name="idfood" Type="int" Mode="In" />
+          <Parameter Name="count" Type="int" Mode="In" />
+        </Function>
         <Function Name="Addstaffaccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="nvarchar" Mode="In" />
           <Parameter Name="status" Type="nvarchar" Mode="In" />
@@ -161,7 +173,16 @@
           <Parameter Name="password" Type="varchar" Mode="In" />
           <Parameter Name="type" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="customer_table" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="delete_billinfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idbill" Type="int" Mode="In" />
+        </Function>
         <Function Name="deletestaffaccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="empty_table" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="QuanLyCafe3ModelStoreContainer">
@@ -404,6 +425,27 @@
             <Parameter Name="password" Mode="In" Type="String" />
             <Parameter Name="type" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="add_bill">
+            <Parameter Name="datecheckin" Mode="In" Type="DateTime" />
+            <Parameter Name="datecheckout" Mode="In" Type="DateTime" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="idaccount" Mode="In" Type="Int32" />
+            <Parameter Name="idtable" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="add_billinfo">
+            <Parameter Name="idbill" Mode="In" Type="Int32" />
+            <Parameter Name="idfood" Mode="In" Type="Int32" />
+            <Parameter Name="count" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="delete_billinfo">
+          <Parameter Name="idbill" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="customer_table">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="empty_table">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -485,6 +527,11 @@
           <FunctionImportMapping FunctionImportName="deletestaffaccount" FunctionName="QuanLyCafe3Model.Store.deletestaffaccount" />
           <FunctionImportMapping FunctionImportName="Addstaffaccount" FunctionName="QuanLyCafe3Model.Store.Addstaffaccount" />
           <FunctionImportMapping FunctionImportName="Addstaffaccountlatest" FunctionName="QuanLyCafe3Model.Store.Addstaffaccountlatest" />
+          <FunctionImportMapping FunctionImportName="add_bill" FunctionName="QuanLyCafe3Model.Store.add_bill" />
+          <FunctionImportMapping FunctionImportName="add_billinfo" FunctionName="QuanLyCafe3Model.Store.add_billinfo" />
+          <FunctionImportMapping FunctionImportName="delete_billinfo" FunctionName="QuanLyCafe3Model.Store.delete_billinfo" />
+          <FunctionImportMapping FunctionImportName="customer_table" FunctionName="QuanLyCafe3Model.Store.customer_table" />
+          <FunctionImportMapping FunctionImportName="empty_table" FunctionName="QuanLyCafe3Model.Store.empty_table" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

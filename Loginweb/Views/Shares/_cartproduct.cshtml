@@ -8,13 +8,15 @@
     {
 
         private int id;
+        private int idbill;
         private string name;
         private int count;
         private double price;
 
         public cart() { }
-        public cart(int id, string name, int count, double price) { this.id = id; this.name = name; this.count = count; this.price = price; }
+        public cart(int id, int idbill, string name, int count, double price) { this.id = id; this.idbill = idbill; this.name = name; this.count = count; this.price = price; }
         public int ID { set { id = value; } get { return id; } }
+        public int IDBILL { set { idbill = value; } get { return idbill; } }
         public string NAME { set { name = value; } get { return name; } }
         public int COUNT { set { count = value; } get { return count; } }
         public double PRICE { set { price = value; } get { return price; } }
@@ -32,9 +34,10 @@
     List<cart> listcart = new List<cart>();
     for (int i = 0; i < Model.allbillinfos.Count; i++)
     {
-        listcart.Add(new cart(Model.allfoods[i].id, Model.allfoods[i].name, Model.allbillinfos[i].count, Model.allfoods[i].price));
+        listcart.Add(new cart(Model.allfoods[i].id, Model.allbillinfos[i].idbill, Model.allfoods[i].name, Model.allbillinfos[i].count, Model.allfoods[i].price));
     }
 }
+
 <table>
     <thead>
         <tr>
@@ -49,19 +52,22 @@
     <tbody>
         @foreach (var item in listcart)
         {
-            <tr class="addproduct">
-                <th>@item.ID</th>
-                <th>@item.NAME</th>
-                <th>@item.COUNT</th>
-                <th>@item.PRICE</th>
-                <th>@item.totalmoney()</th>
-                <th>
-                    <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#cart" href="/order/delproduct/@item.ID" style="color:var(--text);"
-                       onmouseover="this.style.color='red'" onmouseout="this.style.color='var(--text)'">Delete</a>
-                </th>
-            </tr>
+            if (item.IDBILL == int.Parse(Session["idbill"].ToString()))
+            {
+                <tr class="addproduct">
+                    <th>@item.ID</th>
+                    <th>@item.NAME</th>
+                    <th>@item.COUNT</th>
+                    <th>@item.PRICE</th>
+                    <th>@item.totalmoney()</th>
+                    <th>
+                        <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#cart" href="/order/delproduct/@item.ID" style="color:var(--text);"
+                           onmouseover="this.style.color='red'" onmouseout="this.style.color='var(--text)'">Delete</a>
+                    </th>
+                </tr>
+            }
+
         }
 
     </tbody>
 </table>
-

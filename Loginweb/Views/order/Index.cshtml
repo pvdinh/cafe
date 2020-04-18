@@ -13,33 +13,24 @@
 @{
     var i = 0;
 }
-<script src="~/assets/Scripts/jquery.js"></script>
 <link href="~/assets/css/style.css" rel="stylesheet" />
 <link href="~/assets/css/product.css" rel="stylesheet" />
 <link href="~/assets/css/oder.css" rel="stylesheet" />
-<script src="~/assets/Scripts/ajaxpartialview.js"></script>
+
 <div class="oderitem">
     <div class="tableoder">
         <header>
-            <h2> Chọn đồ Bàn @ViewBag.id : </h2><h3>@DateTime.Now.ToShortDateString() @DateTime.Now.ToShortTimeString()</h3>
+            <h2> Chọn đồ Bàn @Session["id"] : </h2><h3>@DateTime.Now.ToShortDateString() @DateTime.Now.ToLongTimeString()</h3>
         </header>
         <div id="cart">
             @{Html.RenderAction("cart"); }
         </div>
 
 
-        @foreach (var item in Model.alltablefoods)
-        {
-            using (Html.BeginForm("order", "Home", FormMethod.Post))
-            {
-                var statust = item.status;
-                @Html.TextBox("status", "có người", new { style = "display:none;" });
-                <div class="buttonlist">
-                    <button class="confirm" type="submit">Xác Nhận</button>
-                    <button class="bill">In hoá đơn và Thanh Toán</button>
-                </div>
-            }
-        }
+        <div class="buttonlist">
+            <button class="confirm" type="submit">Xác Nhận</button>
+            <button class="bill">In hoá đơn và Thanh Toán</button>
+        </div>
     </div>
     <div class="category">
         Danh Sách SP.
@@ -51,14 +42,14 @@
         {
             <div class="product_Item">
                 <div class="productImage">
-                    @*@Ajax.ActionLink("click", "cartt", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cart", InsertionMode = InsertionMode.Replace })*@
+                    @*@Ajax.ActionLink("click", "cartt", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cart", InsertionMode = InsertionMode.Replace })*@ 
                     @*@Ajax.ActionLink("click1", "cart", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "cart" , InsertionMode = InsertionMode.Replace })*@
-                    <a href="@Url.Action("cartt", "order", new { id = @item.id})">
-                        <img src="@Model.listpathimg[i]" alt="@item.name" />
-                    </a>
+                    @*<a href="@Url.Action("cartt", "order", new { id = @item.id})">
+                            <img src="@Model.listpathimg[i]" alt="@item.name" />
+                        </a>*@
 
-                    @*<a data-ajax="true" data-ajax-method="GET"  data-ajax-mode="replace" data-ajax-update="#cart" 
-                        href="/order/cartt/@item.id"><img src="@Model.listpathimg[i]" alt="@item.name" /></a>*@
+                    <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#cart"
+                       href="/order/cartt/@item.id"><img src="@Model.listpathimg[i]" alt="@item.name" /></a>
                     @*<a href="/order/cart/@item.id"><img src="@Model.listpathimg[i]" alt="Bạc sỉu" /></a>*@
                 </div>
                 <div class="product_info">

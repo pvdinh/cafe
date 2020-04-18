@@ -29,6 +29,7 @@ namespace Loginweb.Controllers
                 else
                 {
                     Session["type"] = userdetail.type;
+                    Session["idaccount"] = userdetail.id;
                     return RedirectToAction("Index", "Home");
                 }
             }

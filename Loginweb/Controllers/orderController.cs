@@ -21,10 +21,27 @@ namespace Loginweb.Controllers
             data.listpathimg = setpathimg();
 
             //get info table when click
-            tablefood x = new tablefood();
-            data.alltablefoods = new List<tablefood>();
-            x = db.tablefoods.ToList().Where(s => s.id == id).FirstOrDefault();
-            data.alltablefoods.Add(x);
+            var x = db.bills.ToList().Where(s => s.idtable == id & string.Compare(s.status, "0", true) == 0).FirstOrDefault();
+            if (x == null)
+            {
+                //tim xem ban co trong hoa don chua
+                DateTime timecheckin = DateTime.Now;
+                DateTime? timecheckout = null;
+                db.add_bill(timecheckin, timecheckout, "0", int.Parse(Session["idaccount"].ToString()), id);
+                db.customer_table(id);
+                var y = db.bills.ToList().Where(s => s.idtable == id & string.Compare(s.status, "0", true) == 0).FirstOrDefault();
+                Session["idbill"] = y.id;
+            }
+            else
+            {
+                Session["idbill"] = x.id;
+                var y = db.tablefoods.ToList().Where(s => s.id == id && string.Compare(s.status, "Trống", true) == 0).FirstOrDefault();
+                if (y != null)
+                {
+                    db.delete_billinfo(x.id);
+                }
+
+            }
 
             //    var y = db.foods.ToList().Where(s => s.id == id).FirstOrDefault();
             //    ViewBag.foodinfo = new List<food>()
@@ -61,19 +78,15 @@ namespace Loginweb.Controllers
             }
             return PartialView("/views/shares/_cartproduct.cshtml", listfood);
         }
+        [HttpGet]
         public ActionResult cartt(int id)
         {
             using (QuanLyCafeEntities3 dbb = new QuanLyCafeEntities3())
             {
-                var x = dbb.billinfoes.ToList().Where(s => s.idfood == id).FirstOrDefault();
+                var x = dbb.billinfoes.ToList().Where(s => s.idfood == id && s.idbill == int.Parse(Session["idbill"].ToString())).FirstOrDefault();
                 if (x == null)
                 {
-                    billinfo y = new billinfo();
-                    y.idbill = 1;
-                    y.idfood = id;
-                    y.count = 1;
-                    dbb.billinfoes.Add(y);
-                    dbb.SaveChanges();
+                    dbb.add_billinfo(int.Parse(Session["idbill"].ToString()), id, 1);
                 }
                 else
                 {
@@ -91,8 +104,8 @@ namespace Loginweb.Controllers
                     listfood.allfoods.Add(x);
                 }
             }
-            //return PartialView("/views/shares/_cartproduct.cshtml", listfood);
-            return RedirectToAction("Index", "order", new { id = Session["id"] });
+            return PartialView("/views/shares/_cartproduct.cshtml", listfood);
+            //return RedirectToAction("Index", "order", new { id = Session["id"] });
         }
 
         public List<string> setpathimg()
