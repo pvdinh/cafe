@@ -17,10 +17,16 @@ namespace Loginweb.Controllers
         QuanLyCafeEntities3 db = new QuanLyCafeEntities3();
         ClassData data = new ClassData();
         private bool position_deletestaff;
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-
-            data.alltablefoods = db.tablefoods.ToList();
+             if(id != null && db.tablefoods.ToList().Where(s=> s.id ==id && string.Compare(s.status,"trống",true) == 0).FirstOrDefault() != null )
+            {
+                db.customer_table(id);
+            }
+           using(QuanLyCafeEntities3 dbb = new QuanLyCafeEntities3())
+            {
+                data.alltablefoods = dbb.tablefoods.SqlQuery("select * from tablefood").ToList();
+            }
             return View(data);
         }
 

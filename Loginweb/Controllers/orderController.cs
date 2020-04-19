@@ -15,7 +15,6 @@ namespace Loginweb.Controllers
         public ActionResult Index(int id)
         {
             Session["id"] = id;
-
             //get list product
             data.listpathimg = new List<string>();
             data.listpathimg = setpathimg();
@@ -28,7 +27,6 @@ namespace Loginweb.Controllers
                 DateTime timecheckin = DateTime.Now;
                 DateTime? timecheckout = null;
                 db.add_bill(timecheckin, timecheckout, "0", int.Parse(Session["idaccount"].ToString()), id);
-                db.customer_table(id);
                 var y = db.bills.ToList().Where(s => s.idtable == id & string.Compare(s.status, "0", true) == 0).FirstOrDefault();
                 Session["idbill"] = y.id;
             }
