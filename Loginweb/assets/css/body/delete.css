@@ -1,51 +1,42 @@
 .deletestaff{
     margin: 50px 100px;
+
 }
 
 .deletestaff input{
     margin: 10px;
-    line-height: 35px;
-    width: 230px;
-    background: darkgray;
+    line-height: 40px;
+    width: 280px;
+    background: coral;
     outline: none;
     border: none;
     border-radius: 40px;
     padding-left: 20px;
     font-size: 16px;
-}
-.deletestaff input{
-    margin: 10px;
-    line-height: 35px;
-    width: 230px;
-    background: darkgray;
-    outline: none;
-    border: none;
-    border-radius: 40px;
-    padding-left: 20px;
-    font-size: 16px;
+    font-weight: 600;
 }
 
 #back{
     margin-top: 10px;
     margin-left: 10px;
     border-radius: 40px;
-    background: darkgray;
+    background: coral;
     border: none;
-    padding: 9px 20px;
+    padding: 12px 20px;
     cursor: pointer;
-    color:black;
+    font-weight: 600;
 }
 
 #delete{
     margin-left: 10px;
     border-radius: 40px;
-    background: darkgray;
+    background: coral;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px;
     cursor: pointer;
-    margin-left: 97px;
+    margin-left: 140px;
+    font-weight: 600;
 }
-
 #back:hover{
     opacity: 80%;
     color: #ce4242;

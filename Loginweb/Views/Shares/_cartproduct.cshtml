@@ -57,7 +57,13 @@
                 <tr class="addproduct">
                     <th>@item.ID</th>
                     <th>@item.NAME</th>
-                    <th>@item.COUNT</th>
+                    <th>
+                        <div class="input-group spinner" style="display: flex;">
+                            <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#cart" href="/order/reduction/@item.ID"><button class="btn btn-default" type="button"><i class="fa fas fa-minus"></i></button></a>
+                            <input style="width: 40px;" readonly="readonly" type="text" class="txtNumber form-control quantity_product_order text-center" value="@item.COUNT">
+                            <a data-ajax="true" data-ajax-method="GET" data-ajax-mode="replace" data-ajax-update="#cart" href="/order/cartt/@item.ID"><button class="btn btn-default" type="button"><i class="fa fas fa-plus"></i></button></a>
+                        </div>
+                    </th>
                     <th>@item.PRICE</th>
                     <th>@item.totalmoney()</th>
                     <th>

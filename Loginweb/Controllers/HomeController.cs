@@ -16,7 +16,6 @@ namespace Loginweb.Controllers
         // GET: Home
         QuanLyCafeEntities3 db = new QuanLyCafeEntities3();
         ClassData data = new ClassData();
-        private bool position_deletestaff;
         public ActionResult Index(int? id)
         {
             if (id != null && db.tablefoods.ToList().Where(s => s.id == id && string.Compare(s.status, "trống", true) == 0).FirstOrDefault() != null)
@@ -37,13 +36,13 @@ namespace Loginweb.Controllers
             return View(data);
         }
 
-        public ActionResult setting(int page=1, int pagesize =4)
+        public ActionResult setting(int page = 1, int pagesize = 4)
         {
             List<staff> allstaff = new List<staff>();
             allstaff = db.staffs.ToList();
             ViewBag.count = allstaff[allstaff.Count() - 1].idaccount + 1;
             var model = new ClassData();
-            var pagelist= model.pagestaff(page,pagesize);
+            var pagelist = model.pagestaff(page, pagesize);
             return View(pagelist);
         }
 
@@ -62,16 +61,7 @@ namespace Loginweb.Controllers
                 try
                 {
                     data.allstaffs = db.staffs.ToList();
-                    if (data.allstaffs[data.allstaffs.Count() -1].idaccount == id)
-                    {
-                        position_deletestaff = true;
-                        db.deletestaffaccount(id);
-                    }
-                    else
-                    { 
-                        position_deletestaff = false;
-                        db.deletestaffaccount(id);
-                    }
+                    db.deletestaffaccount(id);
                 }
                 catch
                 {
@@ -115,18 +105,11 @@ namespace Loginweb.Controllers
             using (QuanLyCafeEntities3 db = new QuanLyCafeEntities3())
             {
                 data.allstaffs = db.staffs.ToList();
-                int idaccount = data.allstaffs[data.allstaffs.Count()-1].idaccount + 1;
+                int idaccount = data.allstaffs[data.allstaffs.Count() - 1].idaccount + 1;
                 string username = "user" + idaccount.ToString();
                 string password = "12345678";
                 string type = "staff";
-                if (position_deletestaff == true)
-                {
-                    db.Addstaffaccountlatest(astaff.name, astaff.status, astaff.position, astaff.email, idaccount, username, password, type);
-                }
-                else
-                {
-                    db.Addstaffaccountlatest(astaff.name, astaff.status, astaff.position, astaff.email, idaccount, username, password, type);
-                }
+                db.Addstaffaccountlatest(astaff.name, astaff.status, astaff.position, astaff.email, idaccount, username, password, type);
             }
             return RedirectToAction("setting", "Home");
         }
@@ -145,6 +128,43 @@ namespace Loginweb.Controllers
             path.Add("/assets/icon/cold brew truyền thống.jpg");
             path.Add("/assets/icon/cà phê sữa.jpg");
             path.Add("/assets/icon/cà phê đen.jpg");
+            path.Add("/assets/icon/espresso.jpg");
+            path.Add("/assets/icon/bạc sỉu.jpg");
+            path.Add("/assets/icon/americano_large.jpg");
+            path.Add("/assets/icon/capuchino.jpg");
+            path.Add("/assets/icon/caramel machiato.jpg");
+            path.Add("/assets/icon/cold brew cam sả.jpg");
+            path.Add("/assets/icon/cold brew phúc bồn tử.jpg");
+            path.Add("/assets/icon/cold brew sữa tươi macchiato.jpg");
+            path.Add("/assets/icon/cold brew sữa tươi.jpg");
+            path.Add("/assets/icon/cold brew truyền thống.jpg");
+            path.Add("/assets/icon/cà phê sữa.jpg");
+            path.Add("/assets/icon/cà phê đen.jpg");
+            path.Add("/assets/icon/espresso.jpg");
+            path.Add("/assets/icon/bạc sỉu.jpg");
+            path.Add("/assets/icon/americano_large.jpg");
+            path.Add("/assets/icon/capuchino.jpg");
+            path.Add("/assets/icon/caramel machiato.jpg");
+            path.Add("/assets/icon/cold brew cam sả.jpg");
+            path.Add("/assets/icon/cold brew phúc bồn tử.jpg");
+            path.Add("/assets/icon/cold brew sữa tươi macchiato.jpg");
+            path.Add("/assets/icon/cold brew sữa tươi.jpg");
+            path.Add("/assets/icon/cold brew truyền thống.jpg");
+            path.Add("/assets/icon/cà phê sữa.jpg");
+            path.Add("/assets/icon/cà phê đen.jpg");
+            path.Add("/assets/icon/espresso.jpg");
+            path.Add("/assets/icon/bạc sỉu.jpg");
+            path.Add("/assets/icon/americano_large.jpg");
+            path.Add("/assets/icon/capuchino.jpg");
+            path.Add("/assets/icon/caramel machiato.jpg");
+            path.Add("/assets/icon/cold brew cam sả.jpg");
+            path.Add("/assets/icon/cold brew phúc bồn tử.jpg");
+            path.Add("/assets/icon/cold brew sữa tươi macchiato.jpg");
+            path.Add("/assets/icon/cold brew sữa tươi.jpg");
+            path.Add("/assets/icon/cold brew truyền thống.jpg");
+            path.Add("/assets/icon/cà phê sữa.jpg");
+            path.Add("/assets/icon/cà phê đen.jpg");
+            path.Add("/assets/icon/espresso.jpg");
             path.Add("/assets/icon/espresso.jpg");
             return path;
         }
